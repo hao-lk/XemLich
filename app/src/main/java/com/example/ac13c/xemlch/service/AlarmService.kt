@@ -3,8 +3,7 @@ package com.example.ac13c.xemlch.service
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
-import com.example.ac13c.xemlch.receiver.AlarmReceiver
-import com.example.ac13c.xemlch.ui.AlarmActivity
+import com.example.ac13c.xemlch.ui.alarm.AlarmActivity
 
 /**
  * @author by haolek on 31/03/2018.

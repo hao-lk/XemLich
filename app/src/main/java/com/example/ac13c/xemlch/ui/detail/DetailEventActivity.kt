@@ -58,6 +58,8 @@ class DetailEventActivity : AppCompatActivity() {
             tvDay.text = intent.getStringExtra("date")
         }
 
+        imgBack.setOnClickListener { onBackPressed() }
+
         tvSave.setOnClickListener({ view ->
             saveData()
             AlarmReceiver.setAlarmReceiver(this)

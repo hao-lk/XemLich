@@ -25,7 +25,7 @@ class CalendarEventAdapter(private var eventList: List<Alarm>) : RecyclerView.Ad
         holder?.tvTitle?.text = eventList[position].title
         holder?.tvDay?.text = "${eventList[position].day}/${eventList[position].month}/${eventList[position].year}"
         holder?.tvTime?.text = "${eventList[position].hour} : ${eventList[position].minute}"
-        holder?.tvTitle?.setOnClickListener({ view ->
+        holder?.itemView?.setOnClickListener({ view ->
             onItemClick.onItemClickDetail(eventList[position])
         })
 

@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.detail.DetailEventActivity" />
-        <activity android:name=".ui.AlarmActivity" />
+        <activity android:name=".ui.alarm.AlarmActivity" />
 
         <service
             android:name=".service.AlarmService"

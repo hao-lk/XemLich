@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity(), CalendarEventAdapter.OnItemClick {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        AlarmReceiver.setAlarmReceiver(this)
 
         calendar.setOnDateChangeListener { calendarView, year, month, day ->
             date = "$day / ${month + 1} / $year"

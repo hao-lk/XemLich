@@ -1,6 +1,5 @@
-package com.example.ac13c.xemlch.ui
+package com.example.ac13c.xemlch.ui.alarm
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.media.AudioManager
 import android.media.MediaPlayer
@@ -9,10 +8,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.PowerManager
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.WindowManager
 import com.example.ac13c.xemlch.R
-import com.example.ac13c.xemlch.local.Alarm
 import com.example.ac13c.xemlch.receiver.AlarmReceiver
 import kotlinx.android.synthetic.main.activity_alarm_screen.*
 
