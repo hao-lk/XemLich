@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Xem lịch</string>
+    <string name="time">Time</string>
+    <string name="thoi_gian">Thời gian:</string>
+    <string name="date">Date</string>
+    <string name="ngay_thang">Ngày tháng:</string>
+    <string name="noi_dung">Nội dung</string>
+    <string name="dia_diem">Địa điểm</string>
+    <string name="tieu_de">Tiêu đề</string>
+</resources>
