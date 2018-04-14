@@ -81,13 +81,11 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/botron_tvb"
-        android:orientation="horizontal">
+        android:gravity="center_vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
             android:paddingLeft="8dp"
             android:text="@string/ngay_thang"
             android:textColor="#000000"
@@ -95,24 +93,14 @@
 
         <TextView
             android:id="@+id/tvDay"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_weight="2"
             android:gravity="center"
+            android:textAlignment="center"
             android:textColor="@color/red"
             android:textSize="22sp"
             android:textStyle="bold"
             tools:text="--/--/----" />
-
-        <Button
-            android:id="@+id/btnDay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/date"
-            android:textAllCaps="false"
-            android:textSize="14sp" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -122,14 +110,12 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/botron_tvb"
-        android:orientation="horizontal">
+        android:gravity="center_vertical">
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
             android:paddingLeft="8dp"
             android:text="@string/thoi_gian"
             android:textColor="#000000"
@@ -137,54 +123,46 @@
 
         <TextView
             android:id="@+id/tvTime"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_weight="2"
             android:gravity="center"
+            android:textAlignment="center"
             android:textColor="@color/red"
             android:textSize="22sp"
             android:textStyle="bold"
             tools:text="--:--" />
-
-        <Button
-            android:id="@+id/btnTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/time"
-            android:textAllCaps="false"
-            android:textSize="14sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llAlarmTone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/botron_tvb"
-        android:orientation="vertical">
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/tvAlarmTone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:paddingLeft="8dp"
-            android:text="Alarm Tone"
+            android:text="Alarm Tone: "
             android:textColor="#000000"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tvAlarmToneSelection"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:paddingLeft="8dp"
             android:text="Select an alarm tone"
-            android:textSize="14sp" />
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </LinearLayout>

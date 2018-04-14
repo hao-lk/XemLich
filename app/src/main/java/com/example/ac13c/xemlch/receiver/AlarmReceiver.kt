@@ -2,6 +2,7 @@ package com.example.ac13c.xemlch.receiver
 
 import android.app.AlarmManager
 import android.app.PendingIntent
+import android.arch.lifecycle.LiveData
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -16,11 +17,11 @@ import java.util.*
  */
 class AlarmReceiver : BroadcastReceiver() {
     companion object {
-        val TITLE = "title"
-        val CONTENT = "content"
-        val HOUR = "hour"
-        val MINUTE = "minute"
-        val TONE = "tone"
+        const val TITLE = "title"
+        const val CONTENT = "content"
+        const val HOUR = "hour"
+        const val MINUTE = "minute"
+        const val TONE = "tone"
 
         fun setAlarmReceiver(context: Context) {
             val calendar = Calendar.getInstance()
@@ -32,7 +33,7 @@ class AlarmReceiver : BroadcastReceiver() {
             val nowHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
             val nowMinute = Calendar.getInstance().get(Calendar.MINUTE)
 
-            Log.e("hhhh", "${dayCurrent} ${monthCurrent} ${yearCurrent}")
+            Log.e("hhhh", "$dayCurrent $monthCurrent $yearCurrent")
 
             val alarm = EventDatabase.getInstance(context)?.eventDao()?.getInfoAlarm(dayCurrent, monthCurrent, yearCurrent) as Alarm
 
@@ -55,7 +56,6 @@ class AlarmReceiver : BroadcastReceiver() {
             intent.putExtra(CONTENT, alarm.content)
             intent.putExtra(HOUR, alarm.hour)
             intent.putExtra(MINUTE, alarm.minute)
-            Log.e("hhhhre", alarm.hour.toString())
             intent.putExtra(TONE, alarm.tone)
             return PendingIntent.getService(context, alarm.id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         }

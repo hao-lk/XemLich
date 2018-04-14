@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), CalendarEventAdapter.OnItemClick {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        calendar.setOnDateChangeListener { calendarView, year, month, day ->
+        calendarView.setOnDateChangeListener { _, year, month, day ->
             date = "$day / ${month + 1} / $year"
         }
 
@@ -45,7 +45,8 @@ class MainActivity : AppCompatActivity(), CalendarEventAdapter.OnItemClick {
         eventViewModel.eventEntities?.observe(this, Observer { eventEntities ->
             adapter.setList(eventEntities!!)
         })
-        btnSelect.setOnClickListener {
+
+        btnAddAlarm.setOnClickListener {
             val intent = Intent(this@MainActivity, DetailEventActivity::class.java)
             intent.putExtra(NEW_KEY, "newKey")
             intent.putExtra("date", date)

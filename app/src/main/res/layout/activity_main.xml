@@ -17,7 +17,7 @@
             android:orientation="vertical">
 
             <CalendarView
-                android:id="@+id/calendar"
+                android:id="@+id/calendarView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/datroi">
@@ -47,7 +47,7 @@
     </android.support.v4.widget.DrawerLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btnSelect"
+        android:id="@+id/btnAddAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

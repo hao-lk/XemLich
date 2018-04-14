@@ -10,6 +10,8 @@ import android.os.PowerManager
 import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
 import com.example.ac13c.xemlch.R
+import com.example.ac13c.xemlch.local.Alarm
+import com.example.ac13c.xemlch.local.EventDatabase
 import com.example.ac13c.xemlch.receiver.AlarmReceiver
 import kotlinx.android.synthetic.main.activity_alarm_screen.*
 
@@ -19,8 +21,8 @@ import kotlinx.android.synthetic.main.activity_alarm_screen.*
 class AlarmActivity : AppCompatActivity() {
 
     companion object {
-        private val WAKELOCK_TIME = 6 * 1000
-        private val TAG = "AlarmActivity"
+        private const val WAKELOCK_TIME = 6 * 1000
+        private const val TAG = "AlarmActivity"
     }
 
     private lateinit var media: MediaPlayer
@@ -34,7 +36,7 @@ class AlarmActivity : AppCompatActivity() {
         val minute = intent.getIntExtra(AlarmReceiver.MINUTE, 0)
         val tone = intent.getStringExtra(AlarmReceiver.TONE)
         tvAlarmTitle.text = title
-        tvAlarmTime.text = "${hour} : ${minute}"
+        tvAlarmTime.text = "$hour : $minute"
         tvAlarmNote.text = content
 
         btnAlarmDismiss.setOnClickListener { v ->
@@ -58,7 +60,7 @@ class AlarmActivity : AppCompatActivity() {
             window.clearFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED)
             window.clearFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD)
 
-            if (wakelock.isHeld()) {
+            if (wakelock.isHeld) {
                 wakelock.release()
             }
         }
@@ -77,7 +79,7 @@ class AlarmActivity : AppCompatActivity() {
 
         wakelock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK or PowerManager.SCREEN_BRIGHT_WAKE_LOCK or PowerManager.ACQUIRE_CAUSES_WAKEUP, TAG)
 
-        if (wakelock.isHeld()) {
+        if (wakelock.isHeld) {
             wakelock.acquire(1 * 60 * 1000L /*10 minutes*/)
         }
     }
@@ -86,7 +88,7 @@ class AlarmActivity : AppCompatActivity() {
         // TODO Auto-generated method stub
         super.onPause()
 
-        if (wakelock.isHeld()) {
+        if (wakelock.isHeld) {
             wakelock.release()
         }
     }

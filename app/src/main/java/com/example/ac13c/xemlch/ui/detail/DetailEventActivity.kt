@@ -28,11 +28,11 @@ class DetailEventActivity : AppCompatActivity() {
     }
 
     private var eventEntity = Alarm()
-    private var day: Int = 0
-    private var month: Int = 0
-    private var year: Int = 0
-    private var hour: Int = 0
-    private var minute: Int = 0
+    private var mDay: Int = 0
+    private var mMonth: Int = 0
+    private var mYear: Int = 0
+    private var mHour: Int = 0
+    private var mMinute: Int = 0
 
     private var key: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,13 +45,13 @@ class DetailEventActivity : AppCompatActivity() {
             edtTitle.setText(eventEntity.title)
             edtAddress.setText(eventEntity.address)
             edtContent.setText(eventEntity.content)
-            this.day = eventEntity.day
-            this.month = eventEntity.month
-            this.year = eventEntity.year
-            this.minute = eventEntity.minute
-            this.hour = eventEntity.hour
-            tvDay.text = "${day} / ${month} / ${year}"
-            tvTime.text = "${hour} : ${minute}"
+            this.mDay = eventEntity.day
+            this.mMonth = eventEntity.month
+            this.mYear = eventEntity.year
+            this.mMinute = eventEntity.minute
+            this.mHour = eventEntity.hour
+            tvDay.text = "$mDay / $mMonth / $mYear"
+            tvTime.text = "$mHour : $mMinute"
             tvAlarmToneSelection.text = RingtoneManager.getRingtone(this, Uri.parse(eventEntity.tone)).getTitle(this)
         } else {
             val intent = intent
@@ -60,17 +60,17 @@ class DetailEventActivity : AppCompatActivity() {
 
         imgBack.setOnClickListener { onBackPressed() }
 
-        tvSave.setOnClickListener({ view ->
+        tvSave.setOnClickListener({
             saveData()
             AlarmReceiver.setAlarmReceiver(this)
             finish()
         })
 
-        btnDay.setOnClickListener { v ->
+        tvDay.setOnClickListener {
             funDate()
         }
 
-        btnTime.setOnClickListener { v ->
+        tvTime.setOnClickListener {
             funTime()
         }
 
@@ -80,16 +80,19 @@ class DetailEventActivity : AppCompatActivity() {
         }
     }
 
-    fun saveData() {
+    private fun saveData() {
         Toast.makeText(this@DetailEventActivity, "Save", Toast.LENGTH_SHORT).show()
-        eventEntity.title = edtTitle.text.toString()
-        eventEntity.address = edtAddress.text.toString()
-        eventEntity.content = edtContent.text.toString()
-        eventEntity.day = day
-        eventEntity.month = month
-        eventEntity.year = year
-        eventEntity.hour = hour
-        eventEntity.minute = minute
+        eventEntity.run {
+            title = edtTitle.text.toString()
+            address = edtAddress.text.toString()
+            content = edtContent.text.toString()
+            day = mDay
+            month = mMonth
+            year = mYear
+            hour = mHour
+            minute = mMinute
+        }
+
         if (key == "detailKey") {
             EventDatabase.getInstance(this)?.eventDao()?.updateEvent(eventEntity)
         } else {
@@ -97,31 +100,31 @@ class DetailEventActivity : AppCompatActivity() {
         }
     }
 
-    fun funDate() {
+    private fun funDate() {
         val c = Calendar.getInstance()
         val dayCurrent = c.get(Calendar.DAY_OF_MONTH)
         val monthCurrent = c.get(Calendar.MONTH)
         val yearCurrent = c.get(Calendar.YEAR)
         val datePickerDialog = DatePickerDialog(this, android.R.style.Theme_Holo_Light_Panel,
-                DatePickerDialog.OnDateSetListener { datePicker, year, month, day ->
+                DatePickerDialog.OnDateSetListener { _, year, month, day ->
                     tvDay.text = "$day / ${month + 1} / $year"
-                    this.day = day
-                    this.month = month + 1
-                    this.year = year
+                    this.mDay = day
+                    this.mMonth = month + 1
+                    this.mYear = year
                 }, yearCurrent, monthCurrent, dayCurrent)
 
         datePickerDialog.show()
     }
 
-    fun funTime() {
+    private fun funTime() {
         val cal = Calendar.getInstance()
         val hourCurrent = cal.get(Calendar.HOUR_OF_DAY)
         val minuteCurrent = cal.get(Calendar.MINUTE)
         val tpd = TimePickerDialog(this, android.R.style.Theme_Holo_Light_Panel,
-                TimePickerDialog.OnTimeSetListener { timePicker, hour, min ->
+                TimePickerDialog.OnTimeSetListener { _, hour, min ->
                     tvTime.text = "${hour}:${min}"
-                    this.hour = hour
-                    this.minute = min
+                    this.mHour = hour
+                    this.mMinute = min
                 }, hourCurrent, minuteCurrent, true)
 
         tpd.show()
